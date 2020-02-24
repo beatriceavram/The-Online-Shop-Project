@@ -1,0 +1,1025 @@
+@import "variables.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+@import "all.scss";
+
+
+// nav bar style
+
+nav {
+  height: 8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $navBg;
+  @include desktop {
+    height: 6em;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+    a:nth-of-type(1) {
+
+      &:hover {
+        opacity: 40%;
+        transition: all 0.5s linear;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      display: flex;
+
+      button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: $cartBtn;
+        font-size: 1.4em;
+        border: 0.2rem solid $cartBtn;
+        border-radius: 0.5rem;
+        padding: 0.2rem 0.5rem;
+        cursor: pointer;
+        margin: 0.2rem 0.5rem 0.2rem 0;
+        color: $ndMainColor;
+
+        &:hover {
+          transition: all 1s linear;
+          color: $hoverCartBtn;
+        }
+
+        strong {
+          display: none;
+          margin-left: 0.5rem;
+
+          @include desktop {
+            display: block;
+          }
+        }
+      }
+
+      .logo {
+        font: 300 2.5em $secFont;
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+      }
+    }
+
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+
+    @include desktop {
+      flex-direction: row;
+    }
+
+    li {
+      list-style: none;
+      margin: 10px 50px 10px 30px;
+      cursor: pointer;
+      color: $ndMainColor;
+
+      @include desktop {
+        margin: 10px 30px 10px 30px;
+      }
+
+
+      a {
+        text-decoration: none;
+        color: $ndMainColor;
+      }
+
+      &:hover {
+        transition: all 0.5s linear;
+        opacity: 40%;
+      }
+    }
+
+    &.container {
+      margin: 15px auto;
+      @include desktop {
+        margin: 40px auto;
+      }
+    }
+  }
+}
+
+
+// ProductList style
+
+.productList {
+  display: flex;
+  background-color: $bodyBgColor;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .row:first-of-type {
+      margin: 1.6rem 0 1.6rem 0;
+      font: 300 1.3rem $secFont;
+      letter-spacing: 6px;
+
+      h1 {
+        font-weight: normal !important;
+      }
+
+      strong {
+        color: $storeBtn;
+        font-weight: normal !important;
+      }
+    }
+
+    .row:last-of-type {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-color: transparent;
+      transition: all 1s linear;
+      width: 100%;
+      height: 100%;
+
+      .cart-btn {
+        position: absolute;
+        background-color: $cartBtn;
+        border: none;
+        color: $ndMainColor;
+        bottom: 0;
+        right: 0;
+        padding: 0.4rem 0.4rem;
+        font-size: 1.5rem;
+        border-radius: 0.5rem 0 0 0;
+        transition: all 0.5s linear;
+        transform: translate(100%, 100%);
+
+        &:hover {
+          color: $hoverCartBtn;
+        }
+      }
+
+      &:hover {
+        border-radius: 10px 10px 0 0;
+        border: 0.04rem solid rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+
+        .cart-btn {
+          transform: translate(0, 0);
+          transition: all 1s linear;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .card-footer {
+    background: transparent;
+    border-top: transparent;
+    transition: all 1s linear;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    span {
+      color: $storeBtn;
+      font-weight: bold;
+      font-size: 1.25em;
+    }
+
+    &:hover {
+      background-color: $bodyBgColor;
+    }
+  }
+
+  .productWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 20em;
+    height: 24em;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+
+    .img-container {
+      position: relative;
+      //padding: 3.1em;
+      overflow: hidden;
+      transition: all 1s linear;
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .imgCard {
+          padding: 2.5em;
+          width: 85%;
+          position: relative;
+        }
+      }
+
+      &:hover .imgCard {
+        transition: all 1s linear;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+// modal container
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 50%;
+  }
+
+  #modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    border: 0.04rem solid rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+
+    h2 {
+      text-transform: capitalize;
+      //font-family: $secFont;
+      //margin: 30px 0 30px 0;
+
+      @include headers-text;
+      font-size: 1.2em;
+
+    }
+
+    .img-modal {
+      width: 150px;
+      margin: 0 0 30px 0;
+
+      @include desktop {
+        width: 40%;
+        margin: 0 0 30px 0;
+      }
+    }
+
+    h5 {
+      &:first-of-type {
+        padding: 10px;
+        align-self: center;
+        //font-size: 1.3em;
+        @include desktop {
+          font-size: 1.7em;
+        }
+      }
+
+      &:nth-of-type(2) {
+        color: rgb(112, 112, 112);
+        //font-size: 1.1em;
+        margin: 30px 0 20px 0;
+
+        @include desktop {
+          font-size: 1.1em;
+        }
+      }
+    }
+
+    .modal-btns {
+
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 10px;
+
+      a:first-of-type {
+
+        margin-right: 1em;
+
+        @include desktop {
+          margin-right: 1.5em;
+          margin-bottom: 4em;
+        }
+
+        button {
+          @include storeBtn;
+        }
+      }
+
+      a:last-of-type {
+        @include desktop {
+          margin-bottom: 4em;
+        }
+
+        button {
+          @include cartBtn;
+        }
+      }
+    }
+  }
+}
+
+
+// details page
+
+.section-details {
+  background-color: $bodyBgColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+
+  div.details {
+    width: auto;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 10px 10px 10px;
+    border: 0.04rem solid rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+
+    .details-1 {
+      h1 {
+        display: none;
+
+        @include desktop {
+          display: block;
+          @include headers-text
+        }
+      }
+    }
+
+    .details-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 50px;
+
+      .col-10 {
+        @include desktop {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .col-6:nth-of-type(1) {
+
+          img {
+            width: 300px;
+            @include desktop {
+              width: 400px;
+            }
+          }
+
+        }
+
+        .col-6:nth-of-type(2) {
+          h1 {
+            @include headers-text;
+            font-size: 1.2em;
+
+            @include desktop {
+              display: none;
+              font-size: 2.1em;
+              font-weight: bold;
+              margin-bottom: 50px;
+            }
+          }
+
+          h4:first-of-type {
+            color: rgb(112, 112, 112);
+            font-size: 1.9em;
+            font-family: $secFont;
+            margin-bottom: 50px;
+          }
+
+          h4:last-of-type {
+            color: $navBg;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 50px;
+          }
+
+          p:first-of-type {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+          }
+
+          p:last-of-type {
+            color: rgb(112, 112, 112);
+            margin-bottom: 50px;
+          }
+
+          a:first-of-type {
+
+            margin-right: 1.5em;
+            margin-bottom: 4em;
+
+            button {
+              @include storeBtn;
+            }
+          }
+
+          button {
+            @include cartBtn;
+          }
+        }
+      }
+    }
+  }
+}
+
+//cart section
+
+
+div.cart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 80vh;
+  font-family: $secFont;
+  font-size: 2em;
+  background-color: $ndMainColor;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+}
+
+section.cart-full {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .container:nth-of-type(1) {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin: 1em 0 1em 0;
+      font-family: $secFont;
+      font-size: 2em;
+
+      strong {
+        color: $storeBtn;
+      }
+    }
+  }
+
+
+  .container:nth-of-type(2) {
+    .row {
+      display: none;
+
+      @include desktop {
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2em 0 3em 0;
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .col-10 {
+        width: 100px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      }
+    }
+  }
+
+  .container:nth-of-type(3) {
+    .row {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 2em 0 3em 0;
+      font-size: 1.3em;
+
+      @include desktop {
+
+        flex-direction: row;
+        align-items: center;
+        height: 200px;
+      }
+
+      .col-10 {
+        margin-bottom: 20px;
+
+        @include desktop {
+          width: 100px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .col-10:nth-of-type(1) {
+        img {
+          width: 200px;
+        }
+      }
+
+      .col-10:nth-of-type(2) {
+        span {
+          @include desktop {
+            display: none;
+          }
+        }
+      }
+
+      .col-10:nth-of-type(3) {
+        span {
+          @include desktop {
+            display: none;
+          }
+        }
+      }
+
+      .col-10:nth-of-type(4) {
+        div {
+          @include desktop {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+          }
+
+          span {
+            font-weight: bold;
+            margin: 2px;
+            padding: 5px;
+            border: 1px solid black;
+
+            &:first-of-type {
+              border: none;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+
+      .col-10:nth-of-type(5) {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        span {
+          margin-right: 5px;
+        }
+      }
+
+      .span-display-none {
+        color: $navBg;
+
+        @include desktop {
+          display: none;
+        }
+      }
+
+    }
+  }
+
+
+  .container:nth-of-type(4) {
+    .row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 1.5em;
+      margin: 1em 0 1em 0;
+
+      .btn-cart {
+        @include storeBtn;
+        margin-bottom: 2em;
+      }
+
+      h5 {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
+
+
+//footer
+
+
+footer {
+  height: 20vh;
+  background-color: $footerBg;
+  color: white;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  div {
+    margin-top: 70px;
+
+    p {
+      margin-bottom: 15px;
+
+    }
+
+    h4 {
+      font-size: 12px;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      &:hover {
+        opacity: 40%;
+        transition: all 0.5s linear;
+      }
+
+      @include desktop {
+        font-size: unset;
+      }
+    }
+  }
+
+  .contacts {
+    a {
+
+      i {
+        color: white;
+        font-size: 35px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+
+        &:hover {
+          opacity: 40%;
+          transition: all 0.5s linear;
+        }
+      }
+    }
+  }
+}
+
+// 404 not found
+
+.notFound {
+  .row {
+    height: 80vh;
+
+    .col-10 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      div {
+        margin-top: 40px;
+      }
+
+      h3 {
+        font-size: 2em;
+        font-family: $mainFont;
+
+        span {
+          font-family: $secFont;
+          color: $storeBtn;
+        }
+      }
+    }
+  }
+}
+
+// about section
+
+section.about {
+  display: flex;
+  background-color: $bodyBgColor;
+  padding-bottom: 200px;
+
+  .details {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px 10px 10px 10px;
+    border: 0.04rem solid rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    @include desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .about-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      h1 {
+        font: 300 2.3rem $secFont;
+        letter-spacing: 6px;
+        color: #337BAE;
+
+        @include desktop {
+          font: 300 3.3rem $secFont;
+        }
+      }
+
+      h4 {
+        @include desktop {
+          margin-bottom: 50px;
+        }
+      }
+    }
+
+    img {
+      width: 270px;
+      height: 195px;
+
+      @include desktop {
+        width: auto;
+        height: auto;
+      }
+    }
+
+    .about-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+
+      @include desktop {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .about-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+          font-size: 1.2em;
+          padding: 30px;
+          line-height: 1.6;
+
+          @include desktop {
+            font-size: 1.25em;
+            padding: 50px;
+          }
+
+        }
+
+        .inspiration {
+          font-size: 1.5em;
+          color: $cartBtn;
+          margin: 10px 0 50px 0;
+        }
+
+        .tech {
+          i {
+            color: $storeBtn;
+            font-size: 35px;
+            margin-right: 20px;
+
+            &:hover {
+              opacity: 40%;
+              transition: all 0.5s linear;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// contact form
+
+.contact {
+  width: 100%;
+  background-color: $bodyBgColor;
+  padding-bottom: 200px;
+  padding-top: 60px;
+
+  .wrapper {
+    //padding-top: 20px;
+    //position: relative;
+    //max-width: 800px;
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    border: 0.04rem solid rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .section-header {
+    @include headers-text;
+  }
+
+  .content-contact {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    @include desktop {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: row;
+    }
+
+  }
+
+  .left-side {
+    float: left;
+    width: 400px;
+    font-family: $mainFont;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    textarea {
+      width: 200px;
+
+      height: 200px;
+      border: 1px solid $storeBtn;
+      background-color: $bodyBgColor;
+      color: $mainColor;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      padding: 10px;
+
+      &::placeholder {
+        color: $mainColor;
+      }
+
+      @include desktop {
+        width: 400px;
+      }
+    }
+
+    input {
+      max-width: 400px;
+      background-color: $bodyBgColor;
+      border: 1px solid $storeBtn;
+      color: $mainColor;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      height: 30px;
+      padding: 10px;
+
+      &::placeholder {
+        color: $mainColor;
+      }
+
+      @include desktop {
+        width: 100%;
+      }
+    }
+
+    .button {
+      @include storeBtn;
+      padding: 5px;
+      margin-bottom: 50px;
+    }
+
+    ul {
+      margin: 10px 0 10px 0;
+      transition: .7s;
+
+      li {
+        color: $cartBtn;
+        font-size: 14px;
+        list-style: none;
+
+      }
+    }
+  }
+
+  .right-side {
+
+    ul {
+
+      li {
+        list-style-type: none;
+        padding-left: 20px;
+        line-height: 6;
+        color: $mainColor;
+
+        a {
+          text-decoration: none;
+          color: $mainColor;
+        }
+
+        .contact-text {
+          font: 300 14px $mainFont;
+          letter-spacing: 1.9px;
+          color: $mainColor;
+
+          @include desktop {
+            font: 300 18px $mainFont;
+          }
+        }
+
+        .place {
+          margin-left: 62px;
+        }
+
+        .phone {
+          margin-left: 56px;
+
+          &:hover {
+            opacity: 40%;
+            transition-duration: 0.2s;
+          }
+        }
+
+        .gmail {
+          margin-left: 53px;
+
+          &:hover {
+            opacity: 40%;
+            transition-duration: 0.2s;
+          }
+        }
+
+        i {
+          color: $storeBtn;
+        }
+
+      }
+    }
+
+  }
+}
+
+// carousel

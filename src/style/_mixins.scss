@@ -1,0 +1,54 @@
+@import "./_variables.scss";
+
+@mixin mobile {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin storeBtn {
+  background-color: transparent;
+  border: 2px solid $storeBtn;
+  color: $storeBtn;
+  padding: 0.4rem 0.4rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $storeBtn;
+    color: $ndMainColor;
+    transition: all 0.5s linear;
+  }
+}
+
+@mixin cartBtn {
+  background-color: transparent;
+  border: 2px solid $cartBtn;
+  color: $cartBtn;
+  padding: 0.4rem 0.4rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $cartBtn;
+    color: $hoverCartBtn;
+    transition: all 0.5s linear;
+  }
+}
+
+@mixin headers-text {
+  text-align: center;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  font: 300 60px $secFont;
+  letter-spacing: 6px;
+  color: #337BAE;
+}

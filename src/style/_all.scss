@@ -1,0 +1,49 @@
+@import "./variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: $mainColor;
+}
+
+.container {
+  width: 100%;
+  max-width: 90vw;
+  margin: 0 auto;
+  @include desktop {
+    max-width: 80vw;
+  }
+}
+
+
+.grid-container {
+
+  max-width: $gridWidth;
+  margin: 0 auto;
+
+  @mixin clearfix {
+    &::after, &::before {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+  }
+
+  .row {
+    @include clearfix;
+    width: 100%;
+
+    [class*='col-'] {
+      padding: $gutter;
+      float: left;
+      min-height: 50px;
+      width: (100% / $gridCols);
+      height: 100%;
+    }
+
+    }
+  }
